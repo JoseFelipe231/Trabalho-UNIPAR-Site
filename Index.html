@@ -1,0 +1,94 @@
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador Logístico</title>
+    <link rel="stylesheet" href="style.css">
+    <form id="form-frete" action="salvar_frete.php" method="POST"></form>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistema de Gestão Logística</h1>
+            <p>Cadastro de Fretes, Rotas e Cargas</p>
+        </header>
+
+        <form id="form-frete">
+            <section class="card">
+                <h2>1. Dados da Rota e Transportadora</h2>
+                <div class="grid-2">
+                    <div class="input-group">
+                        <label for="origem">Endereço de Origem</label>
+                        <input type="text" id="origem" name="origem" placeholder="Ex: Av. Brasil, 1000 - Curitiba/PR" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="destino">Endereço de Destino</label>
+                        <input type="text" id="destino" name="destino" placeholder="Ex: Rua das Flores, 500 - Maringá/PR" required>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="input-group">
+                        <label for="transportadora">Transportadora Responsável</label>
+                        <select id="transportadora" name="transportadora" required>
+                            <option value="">Selecione...</option>
+                            <option value="TransParaná Logística">TransParaná Logística</option>
+                            <option value="Expresso Sul">Expresso Sul</option>
+                            <option value="Carga Rápida Brasil">Carga Rápida Brasil</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="status">Status do Frete</label>
+                        <select id="status" name="status">
+                            <option value="Aguardando Coleta">Aguardando Coleta</option>
+                            <option value="Em Trânsito">Em Trânsito</option>
+                            <option value="Entregue">Entregue</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="card-header">
+                    <h2>2. Itens da Carga (Produtos)</h2>
+                    <button type="button" id="btn-add-produto" class="btn-secondary">+ Adicionar Produto</button>
+                </div>
+                
+                <!-- Os campos dinâmicos serão inseridos aqui -->
+                <div id="lista-produtos"></div>
+            </section>
+
+            <div class="actions">
+                <button type="submit" class="btn-primary">Registrar Frete</button>
+            </div>
+        </form>
+
+        <!-- Tabela para exibir os fretes cadastrados -->
+        <section class="card">
+            <h2>Fretes Registrados</h2>
+            <div class="table-responsive">
+                <table id="tabela-fretes">
+                    <thead>
+                        <tr>
+                            <th>Origem → Destino</th>
+                            <th>Transportadora</th>
+                            <th>Qtd. Itens / Peso Total</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Preenchido via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
